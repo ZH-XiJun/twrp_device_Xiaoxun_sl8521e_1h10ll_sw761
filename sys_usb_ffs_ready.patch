@@ -1,0 +1,19 @@
+diff -uprN a/bootable/recovery/minadbd21/usb_linux_client.c b/bootable/recovery/minadbd21/usb_linux_client.c
+--- a/bootable/recovery/minadbd21/usb_linux_client.c	2024-05-26 13:24:35.668170784 +0800
++++ b/bootable/recovery/minadbd21/usb_linux_client.c	2024-05-26 13:26:41.111763033 +0800
+@@ -19,6 +19,7 @@
+ #include <unistd.h>
+ #include <string.h>
+ 
++#include <cutils/properties.h>
+ #include <linux/usb/ch9.h>
+ #include <linux/usb/functionfs.h>
+ #include <sys/ioctl.h>
+@@ -336,6 +337,7 @@ static void *usb_ffs_open_thread(void *x
+ 
+             adb_sleep_ms(1000);
+         }
++        property_set("sys.usb.ffs.ready", "1");
+ 
+         D("[ usb_thread - registering device ]\n");
+         register_usb_transport(usb, 0, 1);
