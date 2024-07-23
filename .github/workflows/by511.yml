@@ -1,7 +1,7 @@
 name: Compile TWRP by omnirom 5.1.1
 on:
-  push:
-    branches: [ 'twrp-4.4' ]
+  watch:
+    types: [started]
 jobs:
   build:
     runs-on: ubuntu-latest
